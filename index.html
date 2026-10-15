@@ -45,27 +45,7 @@ main{max-width:1100px;margin:0 auto;padding:28px 16px 50px}
   </div>
 </header>
 <main id="shop">
-  <div class="section-head"><div><h2>Our Candle Collection</h2><p>Apni pasand chunein — order WhatsApp par confirm hoga.</p></div><button class="add" style="width:auto;margin:0" onclick="toggleEditor()">✏️ Edit Shop</button></div>
-  <div class="notice">ℹ️ Ye demo shop hai. Prices sample hain—launch se pehle apni actual prices aur WhatsApp number set kar lena.</div>
-  <section id="editor" class="order-box" style="display:none;margin:0 0 22px">
-    <div class="order-head"><h2>🛠️ Shop Editor</h2><span class="count">Owner tools</span></div>
-    <p class="small">Yahan product add/edit/delete kar sakte ho. Photo upload ya image URL use karo. Changes is browser mein save honge; public website update karne ke liye neeche se updated HTML download karke dobara publish karna hoga.</p>
-    <div class="form-grid">
-      <div class="field"><label for="editName">Product name *</label><input id="editName" placeholder="Jaise Rose Candle"></div>
-      <div class="field"><label for="editPrice">Price (₹) *</label><input id="editPrice" type="number" min="1" placeholder="199"></div>
-      <div class="field"><label for="editDesc">Description</label><input id="editDesc" placeholder="Short product description"></div>
-      <div class="field"><label for="editUnit">Pack/size</label><input id="editUnit" placeholder="Jaise 1 piece / 100 g"></div>
-      <div class="field full"><label for="editImage">Product photo (choose file)</label><input id="editImage" type="file" accept="image/*"><p class="small">Ya online image URL paste karein:</p><input id="editImageUrl" placeholder="https://example.com/candle.jpg"></div>
-      <div class="field full"><label>Photo preview</label><div id="imagePreview" style="min-height:90px;border:1px dashed #ddcfc2;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;color:#75675e">Photo preview yahan dikhega</div></div>
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-      <button class="add" style="width:auto;margin:0" onclick="saveProduct()">Save product</button>
-      <button class="add" style="width:auto;margin:0;background:#75675e" onclick="resetEditor()">Clear form</button>
-      <button class="add" style="width:auto;margin:0;background:#188d54" onclick="downloadUpdatedSite()">Download updated website</button>
-    </div>
-    <p class="small" id="editorMsg"></p>
-    <h3 style="margin:20px 0 8px">Manage products</h3><div id="manageProducts"></div>
-  </section>
+  <div class="section-head"><div><h2>Our Candle Collection</h2><p>Apni pasand chunein — order WhatsApp par confirm hoga.</p></div></div>
   <div class="grid" id="products"></div>
   <section class="order-box" id="order">
     <div class="order-head"><h2>🛒 Your Order</h2><span class="count" id="count">0 items</span></div>
@@ -79,15 +59,9 @@ main{max-width:1100px;margin:0 auto;padding:28px 16px 50px}
     </div>
     <button class="checkout" onclick="sendOrder()">WhatsApp par Order Bhejein ↗</button>
     <p class="small">Button dabane par WhatsApp khulega aur order message tayyar hoga. Message bhejne se pehle details check kar lein. Delivery charges seller se confirm honge.</p>
-    <details class="config">
-      <summary>⚙️ Shop settings (owner ke liye)</summary>
-      <div class="field" style="margin-top:12px"><label for="seller">Seller WhatsApp number</label><input id="seller" type="tel" inputmode="numeric" placeholder="India code ke saath, jaise 919876543210"><p class="small">Apna WhatsApp number country code ke saath daalein, bina + ya spaces ke. Seller WhatsApp number is website mein pehle se set hai.</p></div>
-      <button class="add" onclick="saveSeller()">Number set karein</button>
-      <p class="small" id="settingsMsg"></p>
-    </details>
   </section>
 </main>
-<div class="footer">GlowNest Candles • Made with warmth in India 🇮🇳<br>Demo storefront — brand name, prices and product details are editable.</div>
+<div class="footer">GlowNest Candles • Made with warmth in India 🇮🇳</div>
 <script>
 let products = [
  {id:1,name:"Classic Tealights",desc:"Daily use aur festive decor ke liye",price:149,unit:"Pack of 20",emoji:"🪔",style:"gold",image:""},
@@ -98,23 +72,7 @@ let products = [
  {id:6,name:"Candle Gift Set",desc:"Gift-ready set for celebrations",price:499,unit:"Set of 3",emoji:"🎁",style:"blue",image:""}
 ];
 const qty = Object.fromEntries(products.map(p=>[p.id,0]));
-let editingId = null;
-let uploadedImageData = "";
-try { const saved = localStorage.getItem("glownest_products"); if(saved) products = JSON.parse(saved); } catch(e) {}
-function persistProducts(){ try { localStorage.setItem("glownest_products", JSON.stringify(products)); } catch(e) { document.getElementById("editorMsg").textContent="Browser storage full. Photo file chhota rakhein ya image URL use karein."; } }
-function toggleEditor(){const e=document.getElementById("editor");e.style.display=e.style.display==="none"?"block":"none";renderManage();e.scrollIntoView({behavior:"smooth",block:"start"});}
-function safeText(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function resetEditor(){editingId=null;uploadedImageData="";["editName","editPrice","editDesc","editUnit","editImageUrl","editImage"].forEach(id=>document.getElementById(id).value="");document.getElementById("imagePreview").textContent="Photo preview yahan dikhega";document.getElementById("editorMsg").textContent="Form clear ho gaya.";}
-function editProduct(id){const p=products.find(x=>x.id===id);if(!p)return;editingId=id;uploadedImageData=p.image||"";document.getElementById("editName").value=p.name;document.getElementById("editPrice").value=p.price;document.getElementById("editDesc").value=p.desc;document.getElementById("editUnit").value=p.unit;document.getElementById("editImageUrl").value=(p.image||"").startsWith("data:")?"":(p.image||"");document.getElementById("imagePreview").innerHTML=p.image?`<img src="${p.image}" style="max-height:150px;max-width:100%;object-fit:contain">`:"Photo preview yahan dikhega";document.getElementById("editor").scrollIntoView({behavior:"smooth"});}
-function saveProduct(){const name=document.getElementById("editName").value.trim(),price=Number(document.getElementById("editPrice").value);if(!name||!Number.isFinite(price)||price<=0){alert("Product name aur valid price bharein.");return;}const desc=document.getElementById("editDesc").value.trim(),unit=document.getElementById("editUnit").value.trim()||"1 piece";const url=document.getElementById("editImageUrl").value.trim();const image=uploadedImageData||(url.startsWith("https://")||url.startsWith("http://")?url:"");if(url&&!image&&!/^https?:\/\//i.test(url)){alert("Image URL http:// ya https:// se shuru honi chahiye.");return;}if(editingId!==null){const p=products.find(x=>x.id===editingId);Object.assign(p,{name,price,desc,unit,image});}else{products.push({id:Math.max(0,...products.map(p=>p.id))+1,name,price,desc,unit,image,emoji:"🕯️",style:"gold"});qty[products[products.length-1].id]=0;}persistProducts();renderProducts();renderCart();renderManage();document.getElementById("editorMsg").textContent="Product save ho gaya! Public website ke liye Download updated website dabayein.";resetEditor();}
-function deleteProduct(id){if(!confirm("Is product ko delete karna hai?"))return;products=products.filter(p=>p.id!==id);delete qty[id];persistProducts();renderProducts();renderCart();renderManage();}
-function renderManage(){const el=document.getElementById("manageProducts");if(!el)return;el.innerHTML=products.map(p=>`<div class="cart-item" style="align-items:center"><span>${safeText(p.name)} — ${money(p.price)}</span><span style="display:flex;gap:6px"><button class="qty" style="border:1px solid #eadfd4;border-radius:8px;padding:6px;background:#fff" onclick="editProduct(${p.id})">Edit</button><button style="border:0;border-radius:8px;padding:6px 8px;background:#f8dddd" onclick="deleteProduct(${p.id})">Delete</button></span></div>`).join("")||"Abhi products nahi hain.";}
-function downloadUpdatedSite(){const clone=document.documentElement.cloneNode(true);const script=clone.querySelector("script");if(script){script.textContent=script.textContent.replace(/let products = \[[\s\S]*?\n\];/, "let products = "+JSON.stringify(products)+";");}const blob=new Blob(["<!doctype html>\n"+clone.outerHTML],{type:"text/html;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="index.html";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);document.getElementById("editorMsg").textContent="Updated index.html download ho gayi. Is file ko hosting par upload karke replace karein.";}
-document.getElementById("editImage").addEventListener("change",function(){const f=this.files&&this.files[0];if(!f)return;if(!f.type.startsWith("image/")){alert("Image file select karein.");return;}if(f.size>1200000){alert("Photo 1.2 MB se chhoti rakhein taaki website lightweight rahe.");this.value="";return;}const reader=new FileReader();reader.onload=()=>{uploadedImageData=reader.result;document.getElementById("imagePreview").innerHTML=`<img src="${uploadedImageData}" style="max-height:150px;max-width:100%;object-fit:contain">`;};reader.readAsDataURL(f);});
-document.getElementById("editImageUrl").addEventListener("input",function(){if(this.value.trim().startsWith("https://")||this.value.trim().startsWith("http://")){uploadedImageData="";document.getElementById("imagePreview").innerHTML=`<img src="${safeText(this.value.trim())}" style="max-height:150px;max-width:100%;object-fit:contain" onerror="this.alt='Image load nahi hui'">`;}});
-
 let sellerNumber = "918218803284";
-document.getElementById("seller").value = sellerNumber;
 const money = n => "₹"+n.toLocaleString("en-IN");
 function renderProducts(){
  document.getElementById("products").innerHTML=products.map(p=>`<article class="card"><div class="product-art ${p.style}" ${p.image?`style="background:#fff"`:""}>${p.image?`<img src="${p.image}" alt="${safeText(p.name)}" style="width:100%;height:100%;object-fit:cover">`:p.emoji}</div><div class="card-body"><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="price-row"><div><div class="price">${money(p.price)}</div><div class="unit">${p.unit}</div></div><div class="qty"><button aria-label="Decrease ${p.name}" onclick="changeQty(${p.id},-1)">−</button><span id="q${p.id}">0</span><button aria-label="Increase ${p.name}" onclick="changeQty(${p.id},1)">+</button></div></div><button class="add" onclick="addOne(${p.id})">Add to cart</button></div></article>`).join("");
