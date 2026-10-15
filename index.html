@@ -1,113 +1,214 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#6b3f2a">
-<title>GlowNest Candles | Handmade Candle Shop</title>
-<style>
-:root{--ink:#2b211c;--muted:#75675e;--cream:#fffaf4;--paper:#fff;--brown:#6b3f2a;--gold:#d9a441;--pink:#f4d7d0;--line:#eadfd4}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-header{background:linear-gradient(135deg,#4b2b20,#87553a);color:white;padding:22px 16px 30px}
-.wrap{max-width:1100px;margin:auto;padding:0 16px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1100px;margin:auto}
-.brand{font-weight:850;font-size:1.25rem;letter-spacing:.3px}.brand span{color:#ffd98a}
-.pill{border:1px solid #ffffff55;border-radius:99px;padding:7px 11px;font-size:.8rem}
-.hero{max-width:1100px;margin:30px auto 0;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}
-h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.04;margin:0 0 14px}.hero p{color:#f6e9df;max-width:520px;line-height:1.6;margin:0 0 20px}
-.cta{display:inline-block;background:#ffd98a;color:#39251b;padding:12px 17px;border-radius:12px;text-decoration:none;font-weight:800}
-.hero-art{min-height:220px;border-radius:24px;background:radial-gradient(circle at 50% 30%,#fff1c6,#e9b76c 45%,#ad6a43 75%);display:flex;align-items:center;justify-content:center;font-size:7rem;box-shadow:inset 0 0 35px #fff8}
-main{max-width:1100px;margin:0 auto;padding:28px 16px 50px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:0 0 16px}.section-head h2{margin:0;font-size:1.55rem}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
-.notice{background:#fff0d2;border:1px solid #f1d8a5;padding:12px 14px;border-radius:12px;margin-bottom:18px;font-size:.9rem}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #4b2b200b;display:flex;flex-direction:column}
-.product-art{height:180px;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(145deg,#fff0dd,#f5d4b8)}
-.product-art.pink{background:linear-gradient(145deg,#fff0f0,#efc6c1)}.product-art.green{background:linear-gradient(145deg,#edf1df,#c8d3b2)}.product-art.blue{background:linear-gradient(145deg,#edf0fa,#c5cde9)}.product-art.gold{background:linear-gradient(145deg,#fff3c9,#e8c078)}.product-art.lilac{background:linear-gradient(145deg,#f6edfa,#d9c3e7)}
-.card-body{padding:15px;display:flex;flex-direction:column;flex:1}.card h3{font-size:1.05rem;margin:0 0 5px}.desc{font-size:.88rem;color:var(--muted);margin:0 0 12px;line-height:1.45;min-height:38px}
-.price-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.price{font-size:1.15rem;font-weight:850}.unit{font-size:.78rem;color:var(--muted);font-weight:500}
-.qty{display:flex;align-items:center;gap:9px}.qty button{width:30px;height:30px;border:1px solid var(--line);background:#fffaf4;border-radius:9px;font-size:1.1rem;cursor:pointer}.qty span{min-width:12px;text-align:center;font-weight:700}
-.add{width:100%;margin-top:12px;background:var(--brown);color:white;border:0;padding:11px;border-radius:11px;font-weight:750;cursor:pointer}.add:active,.checkout:active{transform:scale(.99)}
-.order-box{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}.order-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.order-head h2{margin:0}.count{background:#f5e4d6;padding:6px 10px;border-radius:99px;font-weight:800;font-size:.85rem}
-.cart-list{margin:14px 0;color:var(--muted);font-size:.92rem}.cart-item{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #f1e8df}.total{font-size:1.15rem;font-weight:850;display:flex;justify-content:space-between;padding:12px 0}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:.88rem;font-weight:700}input,textarea{width:100%;border:1px solid #ddcfc2;border-radius:10px;padding:12px;font:inherit;background:#fffdfb;color:var(--ink)}textarea{min-height:80px;resize:vertical}
-.checkout{width:100%;border:0;background:#188d54;color:white;font-size:1rem;font-weight:850;padding:14px;border-radius:12px;margin-top:14px;cursor:pointer}.small{font-size:.8rem;color:var(--muted);line-height:1.5}.config{background:#f8f2ec;border-radius:12px;padding:12px;margin-top:16px}.config summary{font-weight:750;cursor:pointer}.footer{text-align:center;color:var(--muted);padding:24px 16px;border-top:1px solid var(--line);font-size:.85rem}
-@media(max-width:760px){.hero{grid-template-columns:1fr;margin-top:24px}.hero-art{min-height:150px;font-size:5rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.product-art{height:140px;font-size:4rem}.card-body{padding:12px}.desc{min-height:55px}.section-head{align-items:start;flex-direction:column}}
-@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.product-art{height:120px;font-size:3.4rem}.card h3{font-size:.95rem}.desc{font-size:.82rem}.price{font-size:1rem}.qty{gap:5px}.hero-art{min-height:125px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.pill{font-size:.72rem}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f0">
+  <meta name="description" content="GlowNest Candles — candles and gift sets. Order directly on WhatsApp.">
+  <title>GlowNest Candles | Candle Collection</title>
+  <style>
+    :root{--ink:#33251f;--muted:#78675f;--cream:#fff8f0;--paper:#fffdf9;--rose:#a74655;--rose-dark:#873544;--line:#eadbd0;--gold:#c58a42}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    a{color:inherit}
+    .topbar{background:#4a302a;color:#fff8f0;text-align:center;padding:10px 16px;font-size:.88rem}
+    header{padding:34px 18px 28px;text-align:center;background:linear-gradient(135deg,#fff3e4,#f9e1dc)}
+    .brand{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3.6rem);letter-spacing:.02em;margin:0}
+    .tagline{color:#76554b;margin:8px 0 0}
+    .hero{max-width:1050px;margin:24px auto 0;padding:0 18px}
+    .hero-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,42px);display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;box-shadow:0 10px 32px #563a2510}
+    .hero h2{font-family:Georgia,serif;font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.13;margin:0 0 14px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .hero-art{min-height:230px;border-radius:20px;background:radial-gradient(circle at 50% 35%,#fff7d7 0 12%,transparent 13%),radial-gradient(ellipse at 50% 48%,#e6a8a4 0 18%,transparent 19%),radial-gradient(ellipse at 50% 68%,#c77e65 0 24%,transparent 25%),linear-gradient(140deg,#f4d9bd,#f5e8d9);display:grid;place-items:center;position:relative;overflow:hidden}
+    .hero-art:before{content:"";width:110px;height:140px;border-radius:18px 18px 24px 24px;background:linear-gradient(90deg,#f3e4ca,#fff9ec 50%,#e9cdb1);border:1px solid #d8b69b;box-shadow:0 16px 22px #75472a24;position:absolute;bottom:25px}
+    .hero-art:after{content:"";width:8px;height:26px;background:#5b382a;border-radius:50% 50% 35% 35%;position:absolute;top:57px;box-shadow:0 -10px 16px 5px #ffc85b}
+    .hero-label{position:absolute;z-index:1;bottom:65px;background:#fffaf0dd;border:1px solid #ead7bd;border-radius:8px;padding:7px 12px;font:600 .85rem Georgia,serif;letter-spacing:.08em}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{border:0;border-radius:999px;padding:12px 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font:600 .95rem system-ui;cursor:pointer;transition:transform .15s,background .15s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--rose);color:white}.btn-primary:hover{background:var(--rose-dark)}
+    .btn-secondary{background:#f7ece4;color:var(--ink);border:1px solid var(--line)}
+    .section{max-width:1050px;margin:38px auto;padding:0 18px}
+    .section-head{text-align:center;margin-bottom:22px}
+    .section-head h2{font:700 clamp(1.7rem,4vw,2.3rem) Georgia,serif;margin:0}
+    .section-head p{margin:7px 0 0;color:var(--muted)}
+    .products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .product{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 22px #563a2509}
+    .product-art{height:190px;display:grid;place-items:center;background:linear-gradient(140deg,#f9e8d8,#f7dfe0);position:relative;overflow:hidden}
+    .product-art .emoji{font-size:4.5rem;filter:drop-shadow(0 10px 8px #6b392526)}
+    .product-body{padding:16px;display:flex;flex-direction:column;flex:1}
+    .product h3{margin:0 0 6px;font-size:1.08rem}
+    .description{color:var(--muted);font-size:.92rem;margin:0 0 14px;flex:1}
+    .price-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+    .price{font-weight:750;font-size:1.15rem}
+    .unit{color:var(--muted);font-size:.8rem}
+    .add-btn{width:100%;border-radius:10px}
+    .cart{background:#fffdf9;border:1px solid var(--line);border-radius:20px;padding:20px}
+    .cart-empty{color:var(--muted);text-align:center;padding:14px}
+    .cart-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+    .qty{display:flex;align-items:center;gap:8px}
+    .qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer}
+    .cart-total{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:750;padding:16px 0}
+    .checkout{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+    input,textarea{width:100%;padding:12px;border:1px solid #ddc9bd;border-radius:10px;font:inherit;background:white;color:var(--ink)}
+    textarea{min-height:86px;resize:vertical}
+    .full{grid-column:1/-1}
+    .hint{color:var(--muted);font-size:.84rem;margin:12px 0 0}
+    footer{text-align:center;padding:30px 18px;background:#4a302a;color:#fff8f0;margin-top:44px}
+    footer p{margin:5px 0;color:#f3dfd3}
+    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#33251f;color:#fff;padding:11px 16px;border-radius:12px;display:none;z-index:5;max-width:90vw}
+    @media(max-width:760px){.hero-card{grid-template-columns:1fr}.hero-art{min-height:190px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.product-art{height:150px}}
+    @media(max-width:520px){.products{grid-template-columns:1fr}.product-art{height:180px}.checkout{grid-template-columns:1fr}.full{grid-column:auto}.cart-item{grid-template-columns:1fr auto}.cart-item .line-price{grid-column:1/-1}}
+  </style>
 </head>
 <body>
-<header>
-  <div class="top"><div class="brand">🕯️ Glow<span>Nest</span> Candles</div><div class="pill">Handpicked • Gift-ready</div></div>
-  <div class="hero wrap">
-    <div><h1>Har roshni mein<br>thodi si khushi ✨</h1><p>Ghar, gifting aur special moments ke liye candles chunein. Apna favourite product cart mein add karein aur WhatsApp par order bhejein.</p><a class="cta" href="#shop">Candles dekhein ↓</a></div>
-    <div class="hero-art" aria-label="Decorative candle">🕯️🌼</div>
-  </div>
-</header>
-<main id="shop">
-  <div class="section-head"><div><h2>Our Candle Collection</h2><p>Apni pasand chunein — order WhatsApp par confirm hoga.</p></div></div>
-  <div class="grid" id="products"></div>
-  <section class="order-box" id="order">
-    <div class="order-head"><h2>🛒 Your Order</h2><span class="count" id="count">0 items</span></div>
-    <div class="cart-list" id="cart"><p>Abhi cart khaali hai. Upar se candle add karein.</p></div>
-    <div class="total"><span>Total</span><span id="total">₹0</span></div>
-    <div class="form-grid">
-      <div class="field"><label for="customer">Aapka naam *</label><input id="customer" placeholder="Naam likhein" autocomplete="name"></div>
-      <div class="field"><label for="phone">Mobile number *</label><input id="phone" type="tel" placeholder="10-digit mobile" autocomplete="tel" inputmode="numeric"></div>
-      <div class="field full"><label for="address">Delivery address *</label><textarea id="address" placeholder="House no., area, city, PIN code"></textarea></div>
-      <div class="field full"><label for="notes">Extra note (optional)</label><input id="notes" placeholder="Fragrance, gift message, etc."></div>
-    </div>
-    <button class="checkout" onclick="sendOrder()">WhatsApp par Order Bhejein ↗</button>
-    <p class="small">Button dabane par WhatsApp khulega aur order message tayyar hoga. Message bhejne se pehle details check kar lein. Delivery charges seller se confirm honge.</p>
-  </section>
-</main>
-<div class="footer">GlowNest Candles • Made with warmth in India 🇮🇳</div>
-<script>
-let products = [
- {id:1,name:"Classic Tealights",desc:"Daily use aur festive decor ke liye",price:149,unit:"Pack of 20",emoji:"🪔",style:"gold",image:""},
- {id:2,name:"Rose Scented Candle",desc:"Soft floral fragrance, cosy evenings",price:199,unit:"Approx. 100 g",emoji:"🌹",style:"pink",image:""},
- {id:3,name:"Vanilla Jar Candle",desc:"Warm vanilla aroma in a glass jar",price:299,unit:"Approx. 150 g",emoji:"🍮",style:""},
- {id:4,name:"Decorative Candle",desc:"Room decor aur special occasions",price:249,unit:"1 piece",emoji:"🌼",style:"green",image:""},
- {id:5,name:"Lavender Candle",desc:"Floral fragrance, thoughtful gifting",price:229,unit:"Approx. 120 g",emoji:"💜",style:"lilac",image:""},
- {id:6,name:"Candle Gift Set",desc:"Gift-ready set for celebrations",price:499,unit:"Set of 3",emoji:"🎁",style:"blue",image:""}
-];
-const qty = Object.fromEntries(products.map(p=>[p.id,0]));
-let sellerNumber = "918218803284";
-const money = n => "₹"+n.toLocaleString("en-IN");
-function renderProducts(){
- document.getElementById("products").innerHTML=products.map(p=>`<article class="card"><div class="product-art ${p.style}" ${p.image?`style="background:#fff"`:""}>${p.image?`<img src="${p.image}" alt="${safeText(p.name)}" style="width:100%;height:100%;object-fit:cover">`:p.emoji}</div><div class="card-body"><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="price-row"><div><div class="price">${money(p.price)}</div><div class="unit">${p.unit}</div></div><div class="qty"><button aria-label="Decrease ${p.name}" onclick="changeQty(${p.id},-1)">−</button><span id="q${p.id}">0</span><button aria-label="Increase ${p.name}" onclick="changeQty(${p.id},1)">+</button></div></div><button class="add" onclick="addOne(${p.id})">Add to cart</button></div></article>`).join("");
-}
-function changeQty(id,delta){qty[id]=Math.max(0,qty[id]+delta);document.getElementById("q"+id).textContent=qty[id];renderCart();}
-function addOne(id){changeQty(id,1);document.getElementById("order").scrollIntoView({behavior:"smooth",block:"nearest"});}
-function renderCart(){
- const selected=products.filter(p=>qty[p.id]>0);
- const count=selected.reduce((s,p)=>s+qty[p.id],0);
- const total=selected.reduce((s,p)=>s+p.price*qty[p.id],0);
- document.getElementById("count").textContent=count+" item"+(count===1?"":"s");
- document.getElementById("total").textContent=money(total);
- document.getElementById("cart").innerHTML=selected.length?selected.map(p=>`<div class="cart-item"><span>${p.name} × ${qty[p.id]}</span><strong>${money(p.price*qty[p.id])}</strong></div>`).join(""):"<p>Abhi cart khaali hai. Upar se candle add karein.</p>";
-}
-function saveSeller(){
- const n=document.getElementById("seller").value.replace(/\D/g,"");
- if(n.length<10){document.getElementById("settingsMsg").textContent="Valid WhatsApp number daalein, country code ke saath.";return;}
- sellerNumber=n;document.getElementById("settingsMsg").textContent="Number set ho gaya.";
-}
-function sendOrder(){
- const selected=products.filter(p=>qty[p.id]>0);
- if(!selected.length){alert("Pehle kam se kam ek candle cart mein add karein.");return;}
- const name=document.getElementById("customer").value.trim();
- const phone=document.getElementById("phone").value.trim();
- const address=document.getElementById("address").value.trim();
- const notes=document.getElementById("notes").value.trim();
- if(!name||!phone||!address){alert("Naam, mobile number aur delivery address bharna zaroori hai.");return;}
- if(phone.replace(/\D/g,"").length<10){alert("Valid mobile number daalein.");return;}
- if(!sellerNumber || sellerNumber.replace(/\D/g,"").length<10){alert("Seller WhatsApp number website mein sahi set nahi hai.");return;}
- const lines=selected.map(p=>`• ${p.name} (${p.unit}) × ${qty[p.id]} = ${money(p.price*qty[p.id])}`);
- const total=selected.reduce((s,p)=>s+p.price*qty[p.id],0);
- const message=`Namaste! Mujhe candles order karni hain:\\n\\n${lines.join("\\n")}\\n\\n*Product total: ${money(total)}*\\nDelivery charges: please confirm\\n\\nName: ${name}\\nCustomer mobile: ${phone}\\nAddress: ${address}${notes?"\\nNote: "+notes:""}\\n\\nPlease confirm availability and final amount.`;
- window.open("https://wa.me/"+sellerNumber+"?text="+encodeURIComponent(message),"_blank","noopener");
-}
-renderProducts();renderCart();renderManage();
-</script>
+  <div class="topbar">Hand-poured warmth • Thoughtful gifts • Made for cozy moments</div>
+  <header>
+    <h1 class="brand">GlowNest Candles</h1>
+    <p class="tagline">Har roshni mein thodi si warmth ✨</p>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <div>
+          <h2>Light up your little moments.</h2>
+          <p>Apne ghar, celebrations aur gifts ke liye candles chunein. Apna order bhejein aur WhatsApp par confirm karein.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#collection">Shop candles <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="#order">Order kaise karein?</a>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Decorative candle illustration"><span class="hero-label">GLOWNEST • CANDLES</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="section-head">
+        <h2>Our Candle Collection</h2>
+        <p>Apni pasand chunein — order WhatsApp par confirm hoga.</p>
+      </div>
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="section" id="order">
+      <div class="section-head">
+        <h2>Your Cart</h2>
+        <p>Items check karein aur order details bharein.</p>
+      </div>
+      <div class="cart">
+        <div id="cart-items" class="cart-empty">Abhi cart khaali hai. Collection se candle add karein.</div>
+        <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
+        <div class="checkout">
+          <div><label for="customer-name">Aapka naam *</label><input id="customer-name" autocomplete="name" placeholder="Naam" required></div>
+          <div><label for="customer-phone">Mobile number *</label><input id="customer-phone" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile" required></div>
+          <div class="full"><label for="customer-address">Delivery address *</label><textarea id="customer-address" autocomplete="street-address" placeholder="House/Street, area, city, PIN code" required></textarea></div>
+          <div class="full"><label for="customer-notes">Extra note (optional)</label><textarea id="customer-notes" placeholder="Fragrance, colour, delivery note..."></textarea></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;margin-top:14px" id="whatsapp-order">Order on WhatsApp</button>
+        <p class="hint">Order bhejne se pehle details check karein. WhatsApp khulega; message aap review karke khud send karenge. Delivery charges seller se confirm karein.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head">
+        <h2>How to order</h2>
+        <p>1. Candle add karein · 2. Details bharein · 3. WhatsApp par order confirm karein.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <h2 style="font-family:Georgia,serif;margin:0">GlowNest Candles</h2>
+    <p>Thoughtful candles for everyday moments.</p>
+    <p>Order confirmation via WhatsApp</p>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    // Public customer-facing shop. To change products/prices, edit the PRODUCTS list below.
+    // Seller WhatsApp number uses international digits only: country code + number.
+    const SELLER_WHATSAPP = "918218803284";
+    const PRODUCTS = [
+      {id:1, name:"Classic Tealights", price:149, unit:"Pack of 20", description:"Simple, warm glow for everyday use.", emoji:"🕯️"},
+      {id:2, name:"Rose Scented Candle", price:199, unit:"Approx. 100 g", description:"A soft floral fragrance for cozy evenings.", emoji:"🌹"},
+      {id:3, name:"Vanilla Jar Candle", price:299, unit:"Approx. 150 g", description:"A comforting vanilla-scented candle in a jar.", emoji:"🍯"},
+      {id:4, name:"Decorative Candle", price:249, unit:"1 piece", description:"A decorative candle for gifting and festive tables.", emoji:"✨"},
+      {id:5, name:"Lavender Candle", price:229, unit:"Approx. 120 g", description:"A gentle lavender-inspired fragrance.", emoji:"💜"},
+      {id:6, name:"Candle Gift Set", price:499, unit:"Set of 3", description:"A ready-to-gift set for special occasions.", emoji:"🎁"}
+    ];
+    const cart = new Map();
+    const rupees = n => "₹" + Number(n).toLocaleString("en-IN");
+    const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    function renderProducts(){
+      const root = document.getElementById("products");
+      root.innerHTML = PRODUCTS.map(p => `
+        <article class="product">
+          <div class="product-art" aria-hidden="true"><span class="emoji">${p.emoji || "🕯️"}</span></div>
+          <div class="product-body">
+            <h3>${escapeHtml(p.name)}</h3>
+            <p class="description">${escapeHtml(p.description || "")}</p>
+            <div class="price-row"><span class="price">${rupees(p.price)}</span><span class="unit">${escapeHtml(p.unit || "")}</span></div>
+            <button class="btn btn-primary add-btn" type="button" data-add="${p.id}">Add to cart</button>
+          </div>
+        </article>`).join("");
+      root.querySelectorAll("[data-add]").forEach(btn => btn.addEventListener("click", () => {
+        const id = Number(btn.dataset.add);
+        cart.set(id, (cart.get(id) || 0) + 1);
+        renderCart();
+        toast("Candle cart mein add ho gayi!");
+      }));
+    }
+    function renderCart(){
+      const root = document.getElementById("cart-items");
+      const entries = [...cart.entries()].filter(([id, qty]) => qty > 0);
+      if (!entries.length) {
+        root.className = "cart-empty";
+        root.textContent = "Abhi cart khaali hai. Collection se candle add karein.";
+      } else {
+        root.className = "";
+        root.innerHTML = entries.map(([id, qty]) => {
+          const p = PRODUCTS.find(x => x.id === id);
+          return `<div class="cart-item"><div><strong>${escapeHtml(p.name)}</strong><br><span class="unit">${rupees(p.price)} each</span></div><div class="qty"><button type="button" aria-label="Decrease quantity" data-minus="${id}">−</button><strong>${qty}</strong><button type="button" aria-label="Increase quantity" data-plus="${id}">+</button></div><div class="line-price">${rupees(p.price * qty)}</div></div>`;
+        }).join("");
+        root.querySelectorAll("[data-minus]").forEach(b => b.addEventListener("click", () => { const id=Number(b.dataset.minus); cart.set(id,Math.max(0,(cart.get(id)||0)-1)); renderCart(); }));
+        root.querySelectorAll("[data-plus]").forEach(b => b.addEventListener("click", () => { const id=Number(b.dataset.plus); cart.set(id,(cart.get(id)||0)+1); renderCart(); }));
+      }
+      const total = entries.reduce((sum,[id,qty]) => sum + PRODUCTS.find(p=>p.id===id).price*qty,0);
+      document.getElementById("cart-total").textContent = rupees(total);
+    }
+    function toast(message){
+      const el=document.getElementById("toast");
+      el.textContent=message;el.style.display="block";
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer=setTimeout(()=>el.style.display="none",2200);
+    }
+    document.getElementById("whatsapp-order").addEventListener("click", () => {
+      const entries=[...cart.entries()].filter(([id,qty])=>qty>0);
+      if(!entries.length){toast("Pehle collection se candle add karein.");return;}
+      const name=document.getElementById("customer-name").value.trim();
+      const phone=document.getElementById("customer-phone").value.trim();
+      const address=document.getElementById("customer-address").value.trim();
+      const notes=document.getElementById("customer-notes").value.trim();
+      if(!name||!phone||!address){toast("Naam, mobile aur delivery address bharein.");return;}
+      const lines=entries.map(([id,qty])=>{const p=PRODUCTS.find(x=>x.id===id);return `• ${p.name} (${p.unit}) × ${qty} = ${rupees(p.price*qty)}`;});
+      const total=entries.reduce((sum,[id,qty])=>sum+PRODUCTS.find(p=>p.id===id).price*qty,0);
+      const message=[
+        "Namaste GlowNest Candles! Mujhe order place karna hai.",
+        "",
+        "Customer: "+name,
+        "Mobile: "+phone,
+        "Delivery address: "+address,
+        "",
+        "Order items:",
+        ...lines,
+        "",
+        "Product total: "+rupees(total),
+        "Delivery charges: Please confirm",
+        notes ? "Extra note: "+notes : ""
+      ].filter(Boolean).join("\n");
+      const url="https://wa.me/"+SELLER_WHATSAPP+"?text="+encodeURIComponent(message);
+      window.open(url,"_blank","noopener,noreferrer");
+    });
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
